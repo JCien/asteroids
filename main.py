@@ -38,7 +38,7 @@ def main():
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     # Creating the asteroid field
-    asteroidfield = AsteroidField()
+    asteroid_field = AsteroidField()
 
     # Drawing the game onto the screen
     while True:
@@ -58,6 +58,12 @@ def main():
 
         # Updates the display
         pygame.display.flip()
+
+        # Detecting Collision
+        for asteroid in asteroids:
+            if player.collision(asteroid):
+                print("GAME OVER!!!")
+                return
 
         # Pause the game loop until 1/60th of a second has passed
         dt = clock.tick(60) / 1000
